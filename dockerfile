@@ -7,4 +7,4 @@ RUN mkdir /app
 RUN  go mod tidy
 RUN go build -o /app/gin-demo main.go
 WORKDIR /app
-CMD ["/app/main"]
+CMD ["./app/gin-demo/main"]
