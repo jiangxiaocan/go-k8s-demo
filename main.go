@@ -16,5 +16,5 @@ func main()  {
 		})
 	})
 	// 指定地址和端口号
-	router.Run("localhost:9090")
+	router.Run(":9090")
 }

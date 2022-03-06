@@ -1,10 +1,14 @@
-FROM golang:1.14-alpine
+FROM golang:1.16 as builder
 ENV GOPROXY=https://goproxy.cn
-WORKDIR /build
+WORKDIR $GOPATH/src/gin-demo
 COPY . .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main .
+
+FROM scratch
+ENV GIN_MOD=release
+WORKDIR /gin-demo
+COPY --from=builder /go/src/gin-demo/main .
+
 EXPOSE 9090
-RUN mkdir /app
-RUN  go mod tidy
-RUN go build -o /app/gin-demo main.go
-WORKDIR /app
-CMD ["./app/gin-demo/main"]
+
+ENTRYPOINT ["./main"]
