@@ -4,7 +4,7 @@ metadata:
   name: gin-demo-service
   namespace: gin-demo
   labels:
-    k8s-app: gin-demo-service
+    k8s-app:    
 spec:
   type: NodePort
   ports:
