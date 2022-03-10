@@ -1,22 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app.kubernetes.io/name: gin-demo
   name: gin-demo
   namespace: gin-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: gin-demo
+      app: gin-demo
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: gin-demo
+        app: gin-demo
     spec:
       containers:
         - image: 843665303/gin-demo:v1.0
-          name: gin-demo
+          name: gin-demo-containers
           ports:
             - containerPort: 9090
